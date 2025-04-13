@@ -4,6 +4,13 @@ __pycache__/
 *.pyc
 *.pyo
 
-myenv/
+env/
+
+audios/adkar.mp4
+audios/mulk.mp4
+audios/mustajab.mp4
+audios/youssef.mp4
+audios/bakara.mp4
+audios/kitab.mp4
 
 
