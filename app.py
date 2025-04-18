@@ -147,7 +147,6 @@ async def play_specific_video(event):
     await event.reply(f"🔄 جاري تشغيل {video_url}...")
     
     try:
-        await event.reply(f"🎶 تشغيل: {video_url}")
         try:
             await pytgcalls.start()
             await pytgcalls.play(chat_id, youtube_url)
