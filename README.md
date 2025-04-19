@@ -21,13 +21,39 @@ You can deploy this bot by setting the following environment variables:
 
     API_ID=your_api_id
     API_HASH=your_api_hash
-    PHONE_NUMBER=your_telegram_number
-    CLIENT_CODE=your_otp_or_code
-
+    SESSION_STRING=your_session_string
 
 ## 🛠️ **Setup (Locally)**
+### **For Linux Users**
 
       git clone https://github.com/Lyna555/Fahla_Bot.git
       cd Fahla_Bot
       pip install -r requirements.txt
       python fahla_aud_bot.py
+
+### **For Windows Users (via WSL)**
+
+  1. **Install WSL**
+     Open PowerShell as administrator and run:
+     
+          wsl --install
+
+  2. **Navigate to Your Project Directory**
+     Replace the path with your actual username and project location:
+
+          cd /mnt/c/Users/<YourUsername>/path/to/your/project
+     
+  3. **Create a Virtual Environment**
+
+         python3 -m venv your_environment
+  
+  4. **Activate the Environment**
+
+          source your_environment/bin/activate
+
+  5. **Clone & Run the Project**
+      
+          git clone https://github.com/Lyna555/Fahla_Bot.git
+          cd Fahla_Bot
+          pip install -r requirements.txt
+          python fahla_aud_bot.py
