@@ -26,10 +26,10 @@ You can deploy this bot by setting the following environment variables:
 ## 🛠️ **Setup (Locally)**
 ### **For Linux Users**
 
-      git clone https://github.com/Lyna555/Fahla_Bot.git
-      cd Fahla_Bot
+      git clone https://github.com/Lyna555/Audio-Bot.git
+      cd Audio Bot
       pip install -r requirements.txt
-      python fahla_aud_bot.py
+      python main.py
 
 ### **For Windows Users (via WSL)**
 
@@ -37,23 +37,28 @@ You can deploy this bot by setting the following environment variables:
      Open PowerShell as administrator and run:
      
           wsl --install
+     
+  2. **Clone the Project**
+      
+          git clone https://github.com/Lyna555/Audio-bot.git
 
-  2. **Navigate to Your Project Directory**
+  3. **Navigate to Project Directory**
      Replace the path with your actual username and project location:
 
-          cd /mnt/c/Users/<YourUsername>/path/to/your/project
+          cd /mnt/c/Users/<YourUsername>/path/to/Audio-Bot
      
-  3. **Create a Virtual Environment**
+  4. **Create a Virtual Environment**
 
          python3 -m venv your_environment
   
-  4. **Activate the Environment**
+  5. **Activate the Environment**
 
           source your_environment/bin/activate
+     
+  7. **Install Project Requirements**
 
-  5. **Clone & Run the Project**
-      
-          git clone https://github.com/Lyna555/Fahla_Bot.git
-          cd Fahla_Bot
           pip install -r requirements.txt
-          python fahla_aud_bot.py
+     
+  8. **Run the Project**
+
+          python main.py
