@@ -4,8 +4,8 @@ Fahla Audio Bot is an islamic Telegram userbot that allows users to play any aud
 
 ## ⚙️ **Features**
 
-  - 🔊 Playing audio in Telegram group voice chat
-  - 📱 Built with Pyrogram, PyTgCalls, and Telethon
+  - 🔊 Playing sended audios in Telegram group voice chat
+  - 📱 Built with PyTgCalls, and Telethon
   - 🔐 Uses environment variables for secure API credentials
 
 ## 📦 **Requirements**
