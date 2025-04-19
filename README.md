@@ -37,21 +37,22 @@ You can deploy this bot by setting the following environment variables:
      Open PowerShell as administrator and run:
      
           wsl --install
+  2. **Open your WSL terminal and continue working from there**
      
-  2. **Clone the Project**
+  3. **Clone the Project**
       
           git clone https://github.com/Lyna555/Audio-bot.git
 
-  3. **Navigate to Project Directory**
+  4. **Navigate to Project Directory**
      Replace the path with your actual username and project location:
 
           cd /mnt/c/Users/<YourUsername>/path/to/Audio-Bot
      
-  4. **Create a Virtual Environment**
+  5. **Create a Virtual Environment**
 
          python3 -m venv your_environment
   
-  5. **Activate the Environment**
+  6. **Activate the Environment**
 
           source your_environment/bin/activate
      
