@@ -24,18 +24,6 @@ async def is_admin(event):
     
     return any(admin.id == sender_id for admin in admins)
 
-# Checking conditions before starting the commands
-async def check_conditions(event, chat_id):
-    # Check if the user bot is active in this group
-    if chat_id not in active_groups:
-        await event.reply("⚠️ البوت غير مفعل في هذه المجموعة! استخدم `/ابدا` أولًا.")
-        return
-    
-    # Check if the user is an admin
-    if not await is_admin(event):
-        await event.reply("🚫 فقط المشرفين يمكنهم استخدام هذا الأمر!")
-        return
-
 # Start the bot
 @client.on(events.NewMessage(pattern="/ابدا"))
 async def start_bot(event):
@@ -73,7 +61,16 @@ async def play_most_used_audios_handler(event):
     
     chat_id = event.chat_id
     
-    await check_conditions(event, chat_id)
+    # Check if the user bot is active in this group
+    if chat_id not in active_groups:
+        await event.reply("⚠️ البوت غير مفعل في هذه المجموعة! استخدم `/ابدا` أولًا.")
+        return
+    
+    # Check if the user is an admin
+    if not await is_admin(event):
+        await event.reply("🚫 فقط المشرفين يمكنهم استخدام هذا الأمر!")
+        return
+    
     await play_most_used_audios(event, chat_id, pytgcalls)
     
 
@@ -83,7 +80,16 @@ async def play_quran_handler(event):
     
     chat_id = event.chat_id
     
-    await check_conditions(event, chat_id)
+    # Check if the user bot is active in this group
+    if chat_id not in active_groups:
+        await event.reply("⚠️ البوت غير مفعل في هذه المجموعة! استخدم `/ابدا` أولًا.")
+        return
+    
+    # Check if the user is an admin
+    if not await is_admin(event):
+        await event.reply("🚫 فقط المشرفين يمكنهم استخدام هذا الأمر!")
+        return
+    
     await play_quran(event, chat_id, pytgcalls)
     
 # Join the chat voice and play the replied audio file
@@ -91,7 +97,16 @@ async def play_quran_handler(event):
 async def play_sended_audio_handler(event):
     chat_id = event.chat_id
 
-    await check_conditions(event, chat_id)
+    # Check if the user bot is active in this group
+    if chat_id not in active_groups:
+        await event.reply("⚠️ البوت غير مفعل في هذه المجموعة! استخدم `/ابدا` أولًا.")
+        return
+    
+    # Check if the user is an admin
+    if not await is_admin(event):
+        await event.reply("🚫 فقط المشرفين يمكنهم استخدام هذا الأمر!")
+        return
+    
     await play_sended_audio(event, chat_id, pytgcalls)
     
 
@@ -101,7 +116,16 @@ async def pause_sended_audio_handler(event):
     
     chat_id = event.chat_id
      
-    await check_conditions(event, chat_id)
+    # Check if the user bot is active in this group
+    if chat_id not in active_groups:
+        await event.reply("⚠️ البوت غير مفعل في هذه المجموعة! استخدم `/ابدا` أولًا.")
+        return
+    
+    # Check if the user is an admin
+    if not await is_admin(event):
+        await event.reply("🚫 فقط المشرفين يمكنهم استخدام هذا الأمر!")
+        return
+    
     await pause_sended_video(event, chat_id, pytgcalls)
     
 # Resume the audio file
@@ -110,7 +134,16 @@ async def resume_sended_video_handler(event):
     
     chat_id = event.chat_id
     
-    await check_conditions(event, chat_id)
+    # Check if the user bot is active in this group
+    if chat_id not in active_groups:
+        await event.reply("⚠️ البوت غير مفعل في هذه المجموعة! استخدم `/ابدا` أولًا.")
+        return
+    
+    # Check if the user is an admin
+    if not await is_admin(event):
+        await event.reply("🚫 فقط المشرفين يمكنهم استخدام هذا الأمر!")
+        return
+    
     await resume_sended_videos(event, chat_id, pytgcalls)
     
 # Stop the bot
@@ -119,7 +152,15 @@ async def stop_bot(event):
     
     chat_id = event.chat_id
     
-    await check_conditions(event, chat_id)
+    # Check if the user bot is active in this group
+    if chat_id not in active_groups:
+        await event.reply("⚠️ البوت غير مفعل في هذه المجموعة! استخدم `/ابدا` أولًا.")
+        return
+    
+    # Check if the user is an admin
+    if not await is_admin(event):
+        await event.reply("🚫 فقط المشرفين يمكنهم استخدام هذا الأمر!")
+        return
     
     # Stopping the bot and leaving the chat voice
     if chat_id in active_groups:
