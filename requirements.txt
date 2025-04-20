@@ -5,3 +5,5 @@ asyncio
 yt_dlp
 pytube
 ffprobe
+aiohttp
+aiofiles
