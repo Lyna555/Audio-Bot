@@ -1,3 +1,18 @@
+import yt_dlp
+
+# Get youtube video urls
+def get_audio_stream_url(youtube_url):
+    ydl_opts = {
+        'format': 'bestaudio/best',
+        'quiet': True,
+        'no_warnings': True,
+        'skip_download': True,
+    }
+    
+    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+        info_dict = ydl.extract_info(youtube_url, download=False)
+        return info_dict['url']
+
 VIDEO_URLS = {
     "/البقرة": "https://www.dropbox.com/scl/fi/mqxmah0lteljq7t9jo3fd/bakara.mp3?rlkey=owk93u0vayy22pfq6wf1tr37u&st=gqiw2q7n&dl=0",
     "/يوسف": "https://www.dropbox.com/scl/fi/r261wx0ceo1ctouq4j2ts/youssef.mp3?rlkey=u4crt1cfuaxoteb4qojwd49nx&st=hvygnyun&dl=0",
