@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 load_dotenv() # load .env file
 
 # Telegram app information
-API_ID = int(os.getenv("API_ID"))
+API_ID = os.getenv("API_ID")
 API_HASH = os.getenv("API_HASH")
 
 #with TelegramClient(StringSession(), API_ID, API_HASH) as client:
