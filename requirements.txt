@@ -2,8 +2,7 @@ telethon
 py-tgcalls
 python-dotenv
 asyncio
-yt_dlp
-pytube
 ffprobe
 aiohttp
 aiofiles
+dropbox
