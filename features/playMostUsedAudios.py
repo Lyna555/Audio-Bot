@@ -27,7 +27,7 @@ async def download_to_audios(dropbox_url, name):
     file_path = os.path.join(AUDIO_FOLDER, f"{name}.mp3")
     
     if os.path.exists(file_path):
-        return file_path  # Already downloaded
+        return file_path 
 
     async with aiohttp.ClientSession() as session:
         async with session.get(dropbox_url) as resp:
@@ -56,8 +56,12 @@ async def play_most_used_audios(event, chat_id, pytgcalls):
         return
 
     try:
-        await pytgcalls.start()
-        await pytgcalls.play(chat_id, audio_file)
+        try:
+            await pytgcalls.start()
+            await pytgcalls.play(chat_id, audio_file)
+        except:
+            await pytgcalls.play(chat_id, audio_file)
+            
         await event.reply("🎧 تم تشغيل الصوت بنجاح")
     except Exception as e:
         await event.reply("⚠️ يرجى التأكد من أن الغرفة مفتوحة")
