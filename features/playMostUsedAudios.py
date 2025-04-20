@@ -7,6 +7,7 @@ def get_audio_stream_url(youtube_url):
         'quiet': True,
         'no_warnings': True,
         'skip_download': True,
+        'cookies': 'cookies.txt',
         'extract_flat': False,
     }
     
