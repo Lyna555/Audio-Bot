@@ -35,7 +35,6 @@ async def play_quran(event, chat_id, pytgcalls):
             'extract_audio': True,
             'no_warnings': True,
             'noplaylist': True,
-            'cookies': './cookies.txt',
             'quiet': True
         }
     

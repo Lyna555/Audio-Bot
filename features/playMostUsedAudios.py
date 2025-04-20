@@ -1,27 +1,11 @@
-import yt_dlp
-
-# Get youtube video urls
-def get_audio_stream_url(youtube_url):
-    ydl_opts = {
-        'format': 'bestaudio/best',
-        'quiet': True,
-        'no_warnings': True,
-        'skip_download': True,
-        'cookies': './cookies.txt'
-    }
-    
-    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-        info_dict = ydl.extract_info(youtube_url, download=False)
-        return info_dict['url']
-
 VIDEO_URLS = {
-    "/البقرة": "https://www.youtube.com/watch?v=k9NDKEw5slo",
-    "/يوسف": "https://www.youtube.com/watch?v=pENMnDp_XLc",
-    "/الكهف": "https://www.youtube.com/watch?v=DrTaNX51xF0",
-    "/الملك": "https://www.youtube.com/watch?v=1SOzkCdDrz0",
-    "/دعاء": "https://www.youtube.com/watch?v=2hEntR9k5pE",
-    "/مستجاب": "https://www.youtube.com/watch?v=MHHkxeOJxQE",
-    "/اذكار": "https://www.youtube.com/watch?v=xrZALrmabb0",
+    "/البقرة": "https://www.dropbox.com/scl/fi/mqxmah0lteljq7t9jo3fd/bakara.mp3?rlkey=owk93u0vayy22pfq6wf1tr37u&st=gqiw2q7n&dl=0",
+    "/يوسف": "https://www.dropbox.com/scl/fi/r261wx0ceo1ctouq4j2ts/youssef.mp3?rlkey=u4crt1cfuaxoteb4qojwd49nx&st=hvygnyun&dl=0",
+    "/الكهف": "https://www.dropbox.com/scl/fi/iqbk93kzy5jd39cvy9kjs/kahf.mp3?rlkey=3e7nz4v095ep974tnsnxc090f&st=y4sdm69p&dl=0",
+    "/الملك": "https://www.dropbox.com/scl/fi/ntiubyr7wza95ovciq3by/mulk.mp3?rlkey=4wms180vooa2ypdry5763hn36&st=yo5m7nma&dl=0",
+    "/دعاء": "https://www.dropbox.com/scl/fi/boda0c196v4uwdw7wwdzx/kitab.mp3?rlkey=vidx8wtj493gpjfb34xmpqw1c&st=z50rm526&dl=0",
+    "/مستجاب": "https://www.dropbox.com/scl/fi/9xmqeo5vp482gtp79w9jx/mustadjab.mp3?rlkey=vh4d5v2vov8c4rgzvh2afi6bg&st=nw9clwlt&dl=0",
+    "/اذكار": "https://www.dropbox.com/scl/fi/flejra23x4kj5kkifebuh/adhkar.mp3?rlkey=2bsrm88i5r6vt8qgyu6rzogd1&st=xxt6oyq8&dl=0",
 }
 
 async def play_most_used_audios(event, chat_id, pytgcalls):
@@ -36,21 +20,14 @@ async def play_most_used_audios(event, chat_id, pytgcalls):
         await event.reply("❌ لم يتم العثور على الفيديو")
         return
 
-    try:
-        youtube_url = get_audio_stream_url(video_url)
-    except Exception as e:
-        await event.reply("⚠️ خطأ في تحميل الصوت من يوتيوب")
-        print(f"yt-dlp error: {e}")
-        return
-
     await event.reply(f"🔄 جاري تشغيل {video_url}...")
     
     try:
         try:
             await pytgcalls.start()
-            await pytgcalls.play(chat_id, youtube_url)
+            await pytgcalls.play(chat_id, video_url)
         except:
-            await pytgcalls.play(chat_id, youtube_url)
+            await pytgcalls.play(chat_id, video_url)
             
         await event.reply("🎥 تم تشغيل الفيديو بنجاح")
         
