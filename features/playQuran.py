@@ -13,40 +13,51 @@ def list_files_in_folder():
     dbx = dropbox.Dropbox(DROPBOX_TOKEN)
     result = dbx.files_list_folder(FOLDER_PATH)
 
+    # ✅ Sort files by name (e.g. 001.mp3, 002.mp3, etc.)
+    result.entries.sort(key=lambda f: f.name if isinstance(f, dropbox.files.FileMetadata) else '')
+
     links = []
+
     for entry in result.entries:
         if isinstance(entry, dropbox.files.FileMetadata):
-            shared_link_metadata = dbx.sharing_create_shared_link_with_settings(entry.path_lower)
-            raw_url = shared_link_metadata.url.replace("?dl=0", "?raw=1")
-            links.append(raw_url)
+            try:
+                shared_link = dbx.sharing_create_shared_link_with_settings(entry.path_lower)
+            except dropbox.exceptions.ApiError as e:
+                if (isinstance(e.error, dropbox.sharing.CreateSharedLinkWithSettingsError)
+                        and e.error.is_shared_link_already_exists()):
+                    existing_links = dbx.sharing_list_shared_links(path=entry.path_lower, direct_only=True)
+                    shared_link = existing_links.links[0] if existing_links.links else None
+                else:
+                    raise
+
+            if shared_link:
+                raw_url = shared_link.url.replace("?dl=0", "?raw=1")
+                links.append(raw_url)
 
     return links
 
 
 async def play_quran(event, chat_id, pytgcalls):
-    # Fetch audio URLs from the Dropbox folder
     audio_urls = list_files_in_folder()
 
     if not audio_urls:
         await event.reply("❌ لم يتم العثور على أي ملفات صوتية!")
         return
 
-    await event.reply(f"🔄 جاري تشغيل قائمة التشغيل ({len(audio_urls)} ملفات)...")
+    await event.reply(f"🔄 جاري تشغيل القرآن الكريم ({len(audio_urls)} ملفات)...")
 
-    # Play each audio file
-    for audio_url in audio_urls:
-        await event.reply(f"🎶 تشغيل: {audio_url}")
+    for url in audio_urls:
+        await event.reply(f"🎶 يتم الآن تشغيل: {url}")
 
         try:
             try:
                 await pytgcalls.start()
-                await pytgcalls.play(chat_id, audio_url)
+                await pytgcalls.play(chat_id, url)
             except:
-                await pytgcalls.play(chat_id, audio_url)
+                await pytgcalls.play(chat_id, url)
 
-            # Wait for the file to finish (you can replace with fixed sleep or duration check)
-            await asyncio.sleep(10)  # You may want to calculate duration dynamically
+            await asyncio.sleep(10)  # ⏱️ Replace with real duration if needed
         except Exception as e:
-            await event.reply("⚠️ يرجى التأكد من أن الغرفة مفتوحة")
-            print(f"ERROR: {e}")
+            await event.reply("⚠️ يرجى التأكد من أن الغرفة الصوتية مفتوحة")
+            print(f"❌ خطأ أثناء التشغيل: {e}")
             return
