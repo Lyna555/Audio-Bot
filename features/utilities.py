@@ -16,6 +16,6 @@ API_HASH = os.getenv("API_HASH")
 # Telegram userbot information
 SESSION_STRING = os.getenv("SESSION_STRING")
 
-client = TelegramClient("bot", API_ID, API_HASH)
+client = TelegramClient(StringSession(SESSION_STRING), API_ID, API_HASH)
 
 pytgcalls = PyTgCalls(client)
