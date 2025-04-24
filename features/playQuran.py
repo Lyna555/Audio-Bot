@@ -13,7 +13,7 @@ def list_files_in_folder():
     dbx = dropbox.Dropbox(DROPBOX_TOKEN)
     result = dbx.files_list_folder(FOLDER_PATH)
 
-    # ✅ Sort files by name (e.g. 001.mp3, 002.mp3, etc.)
+    # Sort files by name
     result.entries.sort(key=lambda f: f.name if isinstance(f, dropbox.files.FileMetadata) else '')
 
     links = []
@@ -55,8 +55,6 @@ async def play_quran(event, chat_id, pytgcalls):
                 await pytgcalls.play(chat_id, url)
             except:
                 await pytgcalls.play(chat_id, url)
-
-            await asyncio.sleep(10)  # ⏱️ Replace with real duration if needed
         except Exception as e:
             await event.reply("⚠️ يرجى التأكد من أن الغرفة الصوتية مفتوحة")
             print(f"❌ خطأ أثناء التشغيل: {e}")
