@@ -6,3 +6,4 @@ ffprobe
 aiohttp
 aiofiles
 dropbox
+gunicorn
