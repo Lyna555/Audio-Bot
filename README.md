@@ -26,7 +26,7 @@ You can deploy this bot by setting the following environment variables:
 ## 🛠️ **Setup (Locally)**
 ### **For Linux Users**
 
-      git clone https://github.com/Lyna555/Islamic-Audio-Bot.git
+      git clone https://github.com/Lyna555/Audio-Bot.git
       cd Audio Bot
       pip install -r requirements.txt
       python main.py
