@@ -1,6 +1,6 @@
-# 🤖 **Fahla Audio Bot**
+# 🤖 **Islamic Audio Bot**
 
-Fahla Audio Bot is an islamic Telegram userbot that allows users to play any audio in Telegram group voice chats using the **PyTgCalls** library.
+Islamic Audio Bot is an islamic Telegram userbot that allows users to play any audio in Telegram group voice chats using the **PyTgCalls** library.
 
 ## ⚙️ **Features**
 
@@ -26,7 +26,7 @@ You can deploy this bot by setting the following environment variables:
 ## 🛠️ **Setup (Locally)**
 ### **For Linux Users**
 
-      git clone https://github.com/Lyna555/Audio-Bot.git
+      git clone https://github.com/Lyna555/Islamic-Audio-Bot.git
       cd Audio Bot
       pip install -r requirements.txt
       python main.py
